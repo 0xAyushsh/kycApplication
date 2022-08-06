@@ -104,3 +104,4 @@ verifyResult() {
     fatalln "$2"
   fi
 }
+
