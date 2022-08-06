@@ -3,16 +3,18 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-version: '2'
+version: '2.4'
 
 networks:
   test:
-    name: kyc_test
+    name: fabric_test
 
 services:
 
   ca_sbibank:
-    image: hyperledger/fabric-ca:$IMAGE_TAG
+    image: hyperledger/fabric-ca:latest
+    labels:
+      service: hyperledger-fabric
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-sbibank
@@ -28,7 +30,9 @@ services:
       - test
 
   ca_icicibank:
-    image: hyperledger/fabric-ca:$IMAGE_TAG
+    image: hyperledger/fabric-ca:latest
+    labels:
+      service: hyperledger-fabric
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-icicibank
@@ -44,9 +48,7 @@ services:
       - test
 
   ca_citibank:
-    image: hyperledger/fabric-ca:latest
-    labels:
-      service: hyperledger-fabric
+    image: hyperledger/fabric-ca:$IMAGE_TAG
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-citibank
@@ -60,7 +62,9 @@ services:
     container_name: ca_citibank
 
   ca_orderer:
-    image: hyperledger/fabric-ca:$IMAGE_TAG
+    image: hyperledger/fabric-ca:latest
+    labels:
+      service: hyperledger-fabric
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-orderer

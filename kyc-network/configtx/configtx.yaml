@@ -44,15 +44,15 @@ Organizations:
         OrdererEndpoints:
             - orderer.example.com:7050
 
-    - &Org1
+    - &SBIBank
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: Org1MSP
+        Name: SBIBankMSP
 
         # ID to load the MSP definition as
-        ID: Org1MSP
+        ID: SBIBankMSP
 
-        MSPDir: ../organizations/peerOrganizations/org1.example.com/msp
+        MSPDir: ../organizations/peerOrganizations/sbibank.example.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -60,26 +60,26 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('Org1MSP.admin', 'Org1MSP.peer', 'Org1MSP.client')"
+                Rule: "OR('SBIBankMSP.admin', 'SBIBankMSP.peer', 'SBIBankMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('Org1MSP.admin', 'Org1MSP.client')"
+                Rule: "OR('SBIBankMSP.admin', 'SBIBankMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('Org1MSP.admin')"
+                Rule: "OR('SBIBankMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('Org1MSP.peer')"
+                Rule: "OR('SBIBankMSP.peer')"
 
-    - &Org2
+    - &ICICIBank
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: Org2MSP
+        Name: ICICIBankMSP
 
         # ID to load the MSP definition as
-        ID: Org2MSP
+        ID: ICICIBankMSP
 
-        MSPDir: ../organizations/peerOrganizations/org2.example.com/msp
+        MSPDir: ../organizations/peerOrganizations/icicibank.example.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -87,17 +87,43 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('Org2MSP.admin', 'Org2MSP.peer', 'Org2MSP.client')"
+                Rule: "OR('ICICIBankMSP.admin', 'ICICIBankMSP.peer', 'ICICIBankMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('Org2MSP.admin', 'Org2MSP.client')"
+                Rule: "OR('ICICIBankMSP.admin', 'ICICIBankMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('Org2MSP.admin')"
+                Rule: "OR('ICICIBankMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('Org2MSP.peer')"
+                Rule: "OR('ICICIBankMSP.peer')"
 
+    - &CITIBank
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: CITIBankMSP
+
+        # ID to load the MSP definition as
+        ID: CITIBankMSP
+
+        MSPDir: ../organizations/peerOrganizations/citibank.example.com/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('CITIBankMSP.admin', 'CITIBankMSP.peer', 'CITIBankMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('CITIBankMSP.admin', 'CITIBankMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('CITIBankMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('CITIBankMSP.peer')"
 ################################################################################
 #
 #   SECTION: Capabilities
@@ -301,7 +327,7 @@ Channel: &ChannelDefaults
 ################################################################################
 Profiles:
 
-    TwoOrgsApplicationGenesis:
+    ThreeBanksApplicationGenesis:
         <<: *ChannelDefaults
         Orderer:
             <<: *OrdererDefaults
@@ -312,7 +338,8 @@ Profiles:
         Application:
             <<: *ApplicationDefaults
             Organizations:
-                - *Org1
-                - *Org2
+                - *SBIBank
+                - *ICICIBank
+                - *CITIBank
             Capabilities:
                 <<: *ApplicationCapabilities
