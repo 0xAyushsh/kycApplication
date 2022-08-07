@@ -163,6 +163,16 @@ function createOrgs() {
       fatalln "Failed to generate certificates..."
     fi
 
+    infoln "Creating Org3 Identities"
+
+    set -x
+    cryptogen generate --config=./organizations/cryptogen/crypto-config-org3.yaml --output="organizations"
+    res=$?
+    { set +x; } 2>/dev/null
+    if [ $res -ne 0 ]; then
+      fatalln "Failed to generate certificates..."
+    fi
+
     infoln "Creating Orderer Org Identities"
 
     set -x
@@ -192,13 +202,17 @@ function createOrgs() {
       fi
     done
 
-    infoln "Creating Org1 Identities"
+    infoln "Creating SBIBank Identities"
 
-    createOrg1
+    createSBIBank
 
-    infoln "Creating Org2 Identities"
+    infoln "Creating ICICIBank Identities"
 
-    createOrg2
+    createICICIBank
+
+    infoln "Creating CITIBank Identities"
+
+    createCITIBank
 
     infoln "Creating Orderer Org Identities"
 
@@ -206,7 +220,7 @@ function createOrgs() {
 
   fi
 
-  infoln "Generating CCP files for Org1 and Org2"
+  infoln "Generating CCP files for SBIBank, ICICIBank and CITIBank"
   ./organizations/ccp-generate.sh
 }
 
