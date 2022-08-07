@@ -26,20 +26,32 @@ function yaml_ccp {
         organizations/ccp-template.yaml | sed -e $'s/\\\\n/\\\n          /g'
 }
 
-ORG=1
+ORG=sbibank
 P0PORT=7051
 CAPORT=7054
-PEERPEM=organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
-CAPEM=organizations/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem
+PEERPEM=organizations/peerOrganizations/sbibank.example.com/tlsca/tlsca.sbibank.example.com-cert.pem
+CAPEM=organizations/peerOrganizations/sbibank.example.com/ca/ca.sbibank.example.com-cert.pem
+ORGMSP=SBIBankMSP
 
-echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/org1.example.com/connection-org1.json
-echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/org1.example.com/connection-org1.yaml
+echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/sbibank.example.com/connection-sbibank.json
+echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/sbibank.example.com/connection-sbibank.yaml
 
-ORG=2
+ORG=icicibank
 P0PORT=9051
 CAPORT=8054
-PEERPEM=organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem
-CAPEM=organizations/peerOrganizations/org2.example.com/ca/ca.org2.example.com-cert.pem
+PEERPEM=organizations/peerOrganizations/icicibank.example.com/tlsca/tlsca.icicibank.example.com-cert.pem
+CAPEM=organizations/peerOrganizations/icicibank.example.com/ca/ca.icicibank.example.com-cert.pem
+ORGMSP=ICICIBankMSP
 
-echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/org2.example.com/connection-org2.json
-echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/org2.example.com/connection-org2.yaml
+echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/icicibank.example.com/connection-icicibank.json
+echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/icicibank.example.com/connection-icicibank.yaml
+
+ORG=citibank
+P0PORT=11051
+CAPORT=11054
+PEERPEM=organizations/peerOrganizations/citibank.example.com/tlsca/tlsca.citibank.example.com-cert.pem
+CAPEM=organizations/peerOrganizations/citibank.example.com/ca/ca.citibank.example.com-cert.pem
+ORGMSP=CITIBankMSP
+
+echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/citibank.example.com/connection-citibank.json
+echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/citibank.example.com/connection-citibank.yaml
