@@ -167,22 +167,22 @@ function createCITIBank() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/citibank.example.com/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:8054 --caname ca-citibank --tls.certfiles "${PWD}/organizations/fabric-ca/citibank/tls-cert.pem"
+  fabric-ca-client enroll -u https://admin:adminpw@localhost:9054 --caname ca-citibank --tls.certfiles "${PWD}/organizations/fabric-ca/citibank/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
   Enable: true
   ClientOUIdentifier:
-    Certificate: cacerts/localhost-8054-ca-citibank.pem
+    Certificate: cacerts/localhost-9054-ca-citibank.pem
     OrganizationalUnitIdentifier: client
   PeerOUIdentifier:
-    Certificate: cacerts/localhost-8054-ca-citibank.pem
+    Certificate: cacerts/localhost-9054-ca-citibank.pem
     OrganizationalUnitIdentifier: peer
   AdminOUIdentifier:
-    Certificate: cacerts/localhost-8054-ca-citibank.pem
+    Certificate: cacerts/localhost-9054-ca-citibank.pem
     OrganizationalUnitIdentifier: admin
   OrdererOUIdentifier:
-    Certificate: cacerts/localhost-8054-ca-citibank.pem
+    Certificate: cacerts/localhost-9054-ca-citibank.pem
     OrganizationalUnitIdentifier: orderer' > "${PWD}/organizations/peerOrganizations/citibank.example.com/msp/config.yaml"
 
   infoln "Registering peer0"
@@ -202,14 +202,14 @@ function createCITIBank() {
 
   infoln "Generating the peer0 msp"
   set -x
-  fabric-ca-client enroll -u https://peer0:peer0pw@localhost:8054 --caname ca-citibank -M "${PWD}/organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/msp" --csr.hosts peer0.citibank.example.com --tls.certfiles "${PWD}/organizations/fabric-ca/citibank/tls-cert.pem"
+  fabric-ca-client enroll -u https://peer0:peer0pw@localhost:9054 --caname ca-citibank -M "${PWD}/organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/msp" --csr.hosts peer0.citibank.example.com --tls.certfiles "${PWD}/organizations/fabric-ca/citibank/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   cp "${PWD}/organizations/peerOrganizations/citibank.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/msp/config.yaml"
 
   infoln "Generating the peer0-tls certificates"
   set -x
-  fabric-ca-client enroll -u https://peer0:peer0pw@localhost:8054 --caname ca-citibank -M "${PWD}/organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/tls" --enrollment.profile tls --csr.hosts peer0.citibank.example.com --csr.hosts localhost --tls.certfiles "${PWD}/organizations/fabric-ca/citibank/tls-cert.pem"
+  fabric-ca-client enroll -u https://peer0:peer0pw@localhost:9054 --caname ca-citibank -M "${PWD}/organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/tls" --enrollment.profile tls --csr.hosts peer0.citibank.example.com --csr.hosts localhost --tls.certfiles "${PWD}/organizations/fabric-ca/citibank/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   cp "${PWD}/organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/tls/tlscacerts/"* "${PWD}/organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/tls/ca.crt"
@@ -227,14 +227,14 @@ function createCITIBank() {
 
   infoln "Generating the user msp"
   set -x
-  fabric-ca-client enroll -u https://user1:user1pw@localhost:8054 --caname ca-citibank -M "${PWD}/organizations/peerOrganizations/citibank.example.com/users/User1@citibank.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/citibank/tls-cert.pem"
+  fabric-ca-client enroll -u https://user1:user1pw@localhost:9054 --caname ca-citibank -M "${PWD}/organizations/peerOrganizations/citibank.example.com/users/User1@citibank.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/citibank/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   cp "${PWD}/organizations/peerOrganizations/citibank.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/citibank.example.com/users/User1@citibank.example.com/msp/config.yaml"
 
   infoln "Generating the org admin msp"
   set -x
-  fabric-ca-client enroll -u https://citibankadmin:citibankadminpw@localhost:8054 --caname ca-citibank -M "${PWD}/organizations/peerOrganizations/citibank.example.com/users/Admin@citibank.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/citibank/tls-cert.pem"
+  fabric-ca-client enroll -u https://citibankadmin:citibankadminpw@localhost:9054 --caname ca-citibank -M "${PWD}/organizations/peerOrganizations/citibank.example.com/users/Admin@citibank.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/citibank/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   cp "${PWD}/organizations/peerOrganizations/citibank.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/citibank.example.com/users/Admin@citibank.example.com/msp/config.yaml"
