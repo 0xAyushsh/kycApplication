@@ -1,17 +1,20 @@
 #!/bin/bash
 
-# imports  
+# imports
 . scripts/envVar.sh
+. scripts/configUpdate.sh
 . scripts/utils.sh
 
 CHANNEL_NAME="$1"
 DELAY="$2"
-MAX_RETRY="$3"
+TIMEOUT="$3"
 VERBOSE="$4"
 : ${CHANNEL_NAME:="mychannel"}
 : ${DELAY:="3"}
-: ${MAX_RETRY:="5"}
+: ${TIMEOUT:="10"}
 : ${VERBOSE:="false"}
+COUNTER=1
+MAX_RETRY=5
 
 if [ ! -d "channel-artifacts" ]; then
 	mkdir channel-artifacts

@@ -135,7 +135,7 @@ services:
   
   peer0.citibank.example.com:
     container_name: peer0.citibank.example.com
-    image: hyperledger/fabric-peer:latest
+    image: hyperledger/fabric-peer:$IMAGE_TAG
     labels:
       service: hyperledger-fabric
     environment:
@@ -160,8 +160,8 @@ services:
       - CORE_PEER_LOCALMSPID=CITIBankMSP
     volumes:
         - /var/run/docker.sock:/host/var/run/docker.sock
-        - ../../organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/msp:/etc/hyperledger/fabric/msp
-        - ../../organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/tls:/etc/hyperledger/fabric/tls
+        - ../organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/tls:/etc/hyperledger/fabric/tls
         - peer0.citibank.example.com:/var/hyperledger/production
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start

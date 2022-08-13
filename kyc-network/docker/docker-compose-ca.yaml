@@ -56,7 +56,7 @@ services:
       - "11054:11054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ../fabric-ca/citibank:/etc/hyperledger/fabric-ca-server
+      - ../organizations/fabric-ca/citibank:/etc/hyperledger/fabric-ca-server
     container_name: ca_citibank
 
   ca_orderer:

@@ -12,9 +12,9 @@
 
 export CORE_PEER_TLS_ENABLED=true
 export ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
-export PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/sbibank.example.com/peers/peer0.sbibank.example.com/tls/ca.crt
-export PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/icicibank.example.com/peers/peer0.icicibank.example.com/tls/ca.crt
-export PEER0_ORG3_CA=${PWD}/organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/tls/ca.crt
+export PEER0_SBIBank_CA=${PWD}/organizations/peerOrganizations/sbibank.example.com/peers/peer0.sbibank.example.com/tls/ca.crt
+export PEER0_ICICIBank_CA=${PWD}/organizations/peerOrganizations/icicibank.example.com/peers/peer0.icicibank.example.com/tls/ca.crt
+export PEER0_CITIBank_CA=${PWD}/organizations/peerOrganizations/citibank.example.com/peers/peer0.citibank.example.com/tls/ca.crt
 export ORDERER_ADMIN_TLS_SIGN_CERT=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
 export ORDERER_ADMIN_TLS_PRIVATE_KEY=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key
 
