@@ -314,11 +314,11 @@ checkCommitReadiness 1 "\"SBIBankMSP\": true" "\"ICICIBankMSP\": true" "\"CITIBa
 checkCommitReadiness 2 "\"SBIBankMSP\": true" "\"ICICIBankMSP\": true" "\"CITIBankMSP\": false"
 checkCommitReadiness 3 "\"SBIBankMSP\": true" "\"ICICIBankMSP\": true" "\"CITIBankMSP\": false"
 
-## approve the definition for org3
+## now approve also for org3
 approveForMyOrg 3
 
 ## check whether the chaincode definition is ready to be committed
-## expect org1 to have approved and org2 not to
+## expect them both to have approved
 checkCommitReadiness 1 "\"SBIBankMSP\": true" "\"ICICIBankMSP\": true" "\"CITIBankMSP\": true"
 checkCommitReadiness 2 "\"SBIBankMSP\": true" "\"ICICIBankMSP\": true" "\"CITIBankMSP\": true"
 checkCommitReadiness 3 "\"SBIBankMSP\": true" "\"ICICIBankMSP\": true" "\"CITIBankMSP\": true"
